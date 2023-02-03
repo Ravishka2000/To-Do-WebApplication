@@ -20,5 +20,3 @@ mongoose.set("strictQuery", false);
 mongoose.connect(URI, PARAMS)
     .then(() => app.listen(PORT, () => console.info(`Server running on PORT ${PORT} 🔥`)))
     .catch((err) => console.error(err.message));
-
-    xxdd
