@@ -31,9 +31,25 @@ const readTodos = async (req, res) => {
     };
 };
 
+const getTodo = async (req, res) => {
+    try {
+        const todo = await Todo.findById(req.params.id)
+        res.status(200).json({
+            todo: todo,
+            message: "Todo Found"
+        })
+    } catch (error) {
+        res.status(404).json({
+            message: error.message
+        });
+    };
+};
+
+
 
 
 export default {
     createTodo,
     readTodos,
+    getTodo,
 };
