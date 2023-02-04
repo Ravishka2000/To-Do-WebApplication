@@ -60,9 +60,28 @@ const updateTodo = async (req, res) => {
     };
 };
 
+const updateCompleted = async (req, res) => {
+
+    try {
+        const id = req.params.id;
+        const todo = await Todo.findByIdAndUpdate(id, { 
+            completed: req.body.completed
+        });
+        res.status(200).json({
+            todo: todo,
+            message: "Todo Status Updated"
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    };
+};
+
 export default {
     createTodo,
     readTodos,
     getTodo,
-    updateTodo
+    updateTodo,
+    updateCompleted
 };

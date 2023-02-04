@@ -7,6 +7,7 @@ router.post('/create', TodoController.createTodo);
 router.get('/', TodoController.readTodos);
 router.get('/get/:id', TodoController.getTodo);
 router.put('/update/:id', TodoController.updateTodo);
+router.put('/update-completed/:id', TodoController.updateCompleted);
 
 
 export default router;
