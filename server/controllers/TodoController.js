@@ -1,4 +1,4 @@
-import Todo from "../modules/TodoModel";
+import Todo from "../modules/TodoModel.js";
 
 const createTodo = async (req, res) => {
 
@@ -17,6 +17,23 @@ const createTodo = async (req, res) => {
     };
 };
 
+const readTodos = async (req, res) => {
+    try {
+        const todos = await Todo.find()
+        res.status(200).json({
+            todos: todos,
+            message: "Todos Found"
+        })
+    } catch (error) {
+        res.status(404).json({
+            message: error.message
+        });
+    };
+};
+
+
+
 export default {
-    createTodo
+    createTodo,
+    readTodos,
 };
