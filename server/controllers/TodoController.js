@@ -2,9 +2,8 @@ import Todo from "../modules/TodoModel.js";
 
 const createTodo = async (req, res) => {
 
-    const newTodo = new Todo(req.body);
-
     try {
+        const newTodo = new Todo(req.body);
         await newTodo.save();
         res.status(200).json({
             message: "ToDo Added successfully",
@@ -78,10 +77,26 @@ const updateCompleted = async (req, res) => {
     };
 };
 
+const deleteTodo = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const todo = await Todo.findByIdAndDelete(id);
+        res.status(200).json({
+            message: "Todo Deleted",
+            todo: todo
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    };
+};
+
 export default {
     createTodo,
     readTodos,
     getTodo,
     updateTodo,
-    updateCompleted
+    updateCompleted,
+    deleteTodo
 };
