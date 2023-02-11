@@ -14,8 +14,9 @@ const ToDos = () => {
     }, [])
 
     return (
-        <div>
-            <table className="table table-striped">
+        <div className='container mt-5 p-4 shadow p-2 mb-3 bg-body-tertiary rounded'>
+            <h1 className='text-center mb-5 text-primary-emphasis fw-bolder'>Your Task's</h1>
+            <table className="table text-center table-hover">
                 <thead>
                     <td>Title</td>
                     <td>Descriptioin</td>
@@ -28,8 +29,7 @@ const ToDos = () => {
                             <td>{todo.title}</td>
                             <td>{todo.description}</td>
                             <td>{todo.dueDate}</td>
-                            {todo.completed ? <td>Completed</td> : <td>Not Completed</td>}
-                            
+                            {todo.completed ? <td><i class="bi bi-check-circle-fill"></i></td> : <td><i class="bi bi-circle"></i></td>}
                         </tr>
                     ))}
                 </tbody>
