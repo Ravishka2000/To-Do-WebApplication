@@ -18,10 +18,11 @@ const ToDos = () => {
             <h1 className='text-center mb-5 text-primary-emphasis fw-bolder'>Your Task's</h1>
             <table className="table text-center table-hover">
                 <thead>
-                    <td>Title</td>
-                    <td>Descriptioin</td>
-                    <td>Due Date</td>
-                    <td>Status</td>
+                    <th>Title</th>
+                    <th>Descriptioin</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
                     {todos.map(todo => (
@@ -29,7 +30,11 @@ const ToDos = () => {
                             <td>{todo.title}</td>
                             <td>{todo.description}</td>
                             <td>{todo.dueDate}</td>
-                            {todo.completed ? <td><i class="bi bi-check-circle-fill"></i></td> : <td><i class="bi bi-circle"></i></td>}
+                            {todo.completed ? <td><i className="bi bi-check-circle-fill h5"></i></td> : <td><i className="bi bi-circle h5"></i></td>}
+                            <td>
+                                <button className='bi bi-pencil-square btn btn-success'></button>
+                                <button className='bi bi-trash btn btn-danger ms-3'></button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
