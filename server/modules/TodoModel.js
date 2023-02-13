@@ -17,6 +17,7 @@ const toDo = new Schema({
   },
   completed: {
     type: Boolean,
+    required: false,
     default: false
   }
 });
