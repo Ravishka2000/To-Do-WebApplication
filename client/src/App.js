@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AddTodo from './components/AddTodo';
 import Header from './components/Header';
 import ToDos from './components/ToDos';
 
@@ -12,6 +13,7 @@ function App() {
       <main>  
         <Routes>
           <Route path="/" element={<ToDos/>}/>
+          <Route path="/add" element={<AddTodo/>}/>
         </Routes>
 
       </main>

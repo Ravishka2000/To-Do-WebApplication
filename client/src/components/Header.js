@@ -29,8 +29,8 @@ const Header = () => {
 						</a>
 					</li>
 					<li className="nav-item">
-						<a href="/" className="nav-link text-light-emphasis">
-							ADD TODO
+						<a href="/add" className="nav-link text-light-emphasis">
+							ADD TASK
 						</a>
 					</li>
 				</ul>

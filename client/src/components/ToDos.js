@@ -13,6 +13,23 @@ const ToDos = () => {
             .catch(res => { alert(res.data.message) });
     }, [])
 
+
+    const handleClick = (id, isCompleted) => {
+        axios.patch(`http://localhost:8090/update-completed/${id}`, { completed: !isCompleted }).then(() => {
+            setTodos(prevTodos => prevTodos.map(todo => {
+                if (todo._id === id) {
+                    return {
+                        ...todo,
+                        completed: !isCompleted
+                    };
+                }
+                return todo;
+            }))
+        });
+        
+
+    }
+
     return (
         <div className='container mt-5 p-4 shadow p-2 mb-3 bg-body-tertiary rounded'>
             <h1 className='text-center mb-5 text-primary-emphasis fw-bolder'>Your Task's</h1>
@@ -26,11 +43,16 @@ const ToDos = () => {
                 </thead>
                 <tbody>
                     {todos.map(todo => (
-                        <tr key={todo.id}>
+                        <tr key={todo._id}>
                             <td>{todo.title}</td>
                             <td>{todo.description}</td>
                             <td>{todo.dueDate}</td>
-                            {todo.completed ? <td><i className="bi bi-check-circle-fill h5"></i></td> : <td><i className="bi bi-circle h5"></i></td>}
+                            <td>
+                                <i
+                                    className={`bi ${todo.completed ? 'bi-check-circle-fill' : 'bi-circle'} btn`}
+                                    onClick={() => handleClick(todo._id, todo.completed)}
+                                />
+                            </td>
                             <td>
                                 <button className='bi bi-pencil-square btn btn-success'></button>
                                 <button className='bi bi-trash btn btn-danger ms-3'></button>
