@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ToDos = () => {
 
@@ -41,11 +42,13 @@ const ToDos = () => {
             <h1 className='text-center mb-5 text-primary-emphasis fw-bolder'>Your Task's</h1>
             <table className="table text-center table-hover">
                 <thead>
-                    <th>Title</th>
-                    <th>Descriptioin</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <tr>
+                        <th>Title</th>
+                        <th>Descriptioin</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {todos.map(todo => (
@@ -60,12 +63,15 @@ const ToDos = () => {
                                 />
                             </td>
                             <td>
-                                <button className='bi bi-pencil-square btn btn-success'></button>
+                                
+                                <Link className='bi bi-pencil-square btn btn-success' to={`/update/${todo._id}`}></Link>
+
                                 <button
                                     className='bi bi-trash btn btn-danger ms-3'
                                     data-bs-toggle='modal'
                                     data-bs-target={`#deleteModal${todo._id}`}
                                 />
+
                                 <div className='modal fade' id={`deleteModal${todo._id}`} tabIndex='-1'>
                                     <div className='modal-dialog modal-dialog-centered'>
                                         <div className='modal-content'>
@@ -83,6 +89,7 @@ const ToDos = () => {
                                         </div>
                                     </div>
                                 </div>
+
                             </td>
                         </tr>
                     ))}
