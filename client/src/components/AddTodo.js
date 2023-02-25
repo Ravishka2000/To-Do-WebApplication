@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddTodo = () => {
@@ -7,6 +8,7 @@ const AddTodo = () => {
     const [tTitle, setTitle] = useState("");
     const [tDescription, setDescription] = useState("");
     const [tDueDate, setDueDate] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ const AddTodo = () => {
         })
             .then((res) => {
                 console.log(res.data);
+                navigate('/');
             })
             .catch((err) => {
                 console.log(err);
