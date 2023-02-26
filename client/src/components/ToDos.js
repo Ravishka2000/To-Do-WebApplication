@@ -40,7 +40,7 @@ const ToDos = () => {
     return (
         <div className='container mt-5 p-4 shadow p-2 mb-3 bg-body-tertiary rounded'>
             <h1 className='text-center mb-5 text-primary-emphasis fw-bolder'>Your Task's</h1>
-            <table className="table text-center table-hover">
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Title</th>
